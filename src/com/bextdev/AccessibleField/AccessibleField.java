@@ -5,6 +5,7 @@ package com.bextdev.AccessibleField;
 import com.google.appinventor.components.annotations.SimpleFunction;
 import com.google.appinventor.components.runtime.AndroidNonvisibleComponent;
 import com.google.appinventor.components.runtime.ComponentContainer;
+import com.google.appinventor.components.runtime.Component;
 import java.lang.reflect.Field;
 
 public class AccessibleField extends AndroidNonvisibleComponent {
@@ -15,7 +16,8 @@ public class AccessibleField extends AndroidNonvisibleComponent {
   }
 
   @SimpleFunction
-  public void Initialize() throws Exception {
+  public void Initialize(Component component, String fieldName) throws Exception {
+    field = component.getClass().getDeclaredField(fieldName);
     field.setAccessible(true);        
   }
 }
